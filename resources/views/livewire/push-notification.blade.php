@@ -4,9 +4,9 @@
             <p class="dropdown-item" style="background: yellow">
                 {{ $notification->data['message'] ?? 'New Notification' }}
             </p>
-            <p>Status: {{ $notification->status ?? 'pending' }}</p> <!-- Display status -->
+            <p>Status: {{ $notification->status }}</p> <!-- Display status -->
                 {{-- @dd($notification->id) --}}
-            <!-- Corrected wire directive -->
+                <input type="hidden" wire:model="status">
             <button wire:click="push('{{ $notification->id }}')" class="btn btn-success">
                 Push Notification
             </button>

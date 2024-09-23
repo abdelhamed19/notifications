@@ -1,4 +1,4 @@
-<div wire:poll class="detail-box">
+<div wire:poll.4s class="detail-box">
     <div class="heading_container">
         <h2>
             Notification {{$count}}

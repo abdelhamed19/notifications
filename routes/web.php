@@ -25,3 +25,5 @@ Route::post('logout', [AuthController::class, 'logout'])->name('logout');
 Route::get('push', function () {
     return view('push');
 })->middleware('auth');
+
+Route::post('add-to-cart',App\Livewire\ProductCard::class)->middleware('auth')->name('add.to.cart');

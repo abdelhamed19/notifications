@@ -7,11 +7,21 @@ use Illuminate\Support\Facades\Auth;
 
 class Notification extends Component
 {
+
+    public $notifications = [];
+    public $count = 0;
     public function render()
     {
-        return view('livewire.notification',
-        ['notifications'=> Auth::user()->unreadNotifications()->get(),
-        'count'=> Auth::user()->unreadNotifications()->count()
-    ]);
+        if (Auth::check()) {
+            $this->notifications = Auth::user()->unreadNotifications()->where('status','pushed')->get();
+            $this->count =  $this->notifications->count();
+        }
+        return view(
+            'livewire.notification',
+            [
+                'notifications' => $this->notifications,
+                'count' => $this->count
+            ]
+        );
     }
 }

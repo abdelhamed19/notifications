@@ -9,9 +9,14 @@ use Livewire\Component;
 
 class ProductCard extends Component
 {
+
     public $price = 120;
     public function store ()
     {
+        if(!Auth::check())
+        {
+            return redirect()->route('login');
+        }
         $cart = Cart::create([
             'price' => $this->price
         ]);
